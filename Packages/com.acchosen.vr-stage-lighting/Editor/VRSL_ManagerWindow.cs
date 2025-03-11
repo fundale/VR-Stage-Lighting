@@ -576,9 +576,9 @@ public class AudioLinkListItem
         laser.ApplyProxyModifications();
         #pragma warning restore 0618 //suppressing obsoletion warnings
 
-        if(PrefabUtility.IsPartOfAnyPrefab(light))
+        if(PrefabUtility.IsPartOfAnyPrefab(laser))
         {
-            PrefabUtility.RecordPrefabInstancePropertyModifications(light);
+            PrefabUtility.RecordPrefabInstancePropertyModifications(laser);
         }
     }
 
@@ -4192,6 +4192,10 @@ public class VRSL_ManagerWindow : EditorWindow {
                                         EditorGUILayout.EndFoldoutHeaderGroup();
                                     }
                                 }
+                                if(fixture.isLaser && PrefabUtility.IsPartOfAnyPrefab(fixture.laser))
+                                {
+                                    PrefabUtility.RecordPrefabInstancePropertyModifications(fixture.laser);
+                                } else
                                 if(PrefabUtility.IsPartOfAnyPrefab(fixture.light))
                                 {
                                     PrefabUtility.RecordPrefabInstancePropertyModifications(fixture.light);
